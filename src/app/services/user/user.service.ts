@@ -4,9 +4,7 @@ import { AppSetting } from 'src/app/setting/app.setting';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
 
   constructor(private http: HttpClient) { }
@@ -24,10 +22,9 @@ export class UserService {
   }
 
   login(email: string, password: string): Observable<any> {
-    const param = new HttpParams();
-    param.append('email', email);
-    param.append('password', password);
-    return this.http.post(AppSetting.APP_URL + '/users/login', param);
+    const param = new HttpParams().set('email', email).set('password', password);
+    
+    return this.http.post<User>(AppSetting.APP_URL + '/users/login', param);
   }
 
 }
