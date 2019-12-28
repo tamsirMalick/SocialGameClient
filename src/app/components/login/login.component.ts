@@ -40,14 +40,14 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.email.value, this.password.value).subscribe(
       data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
-        this.router.navigateByUrl('/subscribe');
+        this.router.navigateByUrl('/home');
       },
       error => {
         if (error.status === 404) {
-          this.errorMessage = 'Aucun utilisateur trouvé';
+          this.errorMessage = 'Email ou mot de passe invalide';
         }
         if (error.status === 400) {
-          this.errorMessage = 'Email ou mot de passe invalide';
+          this.errorMessage = 'Aucun utilisateur trouvé';
         }
       }
     );

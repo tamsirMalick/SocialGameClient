@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="container-fluid">
+    <input type="text" class="form-control"/>
+  </div>
+  <br/>
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page"><a href="#">Create</a></li>
+      </ol>
+    </nav>
+    <br/>
+  </div>
+      <div class="container-fluid card-deck">    
+        <div class="card" *ngFor="let anime of animes">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{anime.nameAnim}}</h5>
+          <p class="card-text">{{anime.category}}</p>
+          <p class="card-text">{{anime.strength}}</p>
+            
+          </div>
+        </div>
+      </div>
+</div>

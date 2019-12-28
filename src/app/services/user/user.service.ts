@@ -23,8 +23,8 @@ export class UserService {
 
   login(email: string, password: string): Observable<any> {
     const param = new HttpParams().set('email', email).set('password', password);
-    
-    return this.http.post<User>(AppSetting.APP_URL + '/users/login', param);
+
+    return this.http.post(AppSetting.APP_URL + '/users/login', param);
   }
 
 }

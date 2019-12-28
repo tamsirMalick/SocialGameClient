@@ -1,6 +1,6 @@
 export class Anime {
     idAnime: number;
-    nameAnime: string;
+    nameAnim: string;
     category: string;
     strength: string;
     shared: boolean;

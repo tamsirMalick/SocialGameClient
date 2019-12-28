@@ -9,12 +9,14 @@ import { LoginComponent } from './components/login/login.component';
 
 import { UserService } from './services/user/user.service';
 import { SubscribeComponent } from './components/subscribe/subscribe.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SubscribeComponent
+    SubscribeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
