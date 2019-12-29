@@ -1,7 +1,8 @@
 export class Anime {
-    idAnime: number;
+    idAnim: number;
     nameAnim: string;
     category: string;
     strength: string;
     shared: boolean;
+    idOwner: number;
 }

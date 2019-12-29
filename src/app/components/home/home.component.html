@@ -1,25 +1,58 @@
 <div class="container mt-5">
-  <div class="container-fluid">
-    <input type="text" class="form-control"/>
-  </div>
-  <br/>
   <div class="container">
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="http://localhost:8080/v1/photos/users/{{user.idUser}}" width="50" height="50" class="d-inline-block align-top">
+        {{user.firstName}}&nbsp;{{user.lastName}}
+      </a>
+    </nav>
+  </div>
+  <br />
+<div class="container mt-5">
+  <div class="row">
+    <input type="text" class="form-control" placeholder="Search"/>
+  </div>
+  <br />
+  <div class="row" *ngIf="errorMessage">
+    <div class="alert alert-danger" role="alert">
+      {{errorMessage}}
+    </div>
+  </div>
+  <br />
+  <div class="row" *ngIf="successMessage">
+    <div class="alert alert-success" role="alert">
+      {{successMessage}}
+    </div>
+  </div>
+  <br />
+  <div class="row">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page"><a href="#">Create</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="#"><i class="fas fa-plus"></i>&nbsp;Add new
+            anime</a></li>
       </ol>
     </nav>
-    <br/>
+    <br />
   </div>
-      <div class="container-fluid card-deck">    
-        <div class="card" *ngFor="let anime of animes">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{anime.nameAnim}}</h5>
-          <p class="card-text">{{anime.category}}</p>
-          <p class="card-text">{{anime.strength}}</p>
-            
-          </div>
+
+  <div class="row">
+    <div class="card mr-3" style="width: 18rem;" *ngFor="let anime of animes" [ngClass] = "{'border-success': anime.idOwner != -1}">
+      <div class="card-header bg-transparent" >
+        <div class="btn-group" role="group" aria-label="Basic example" *ngIf="anime.idOwner !== -1">
+          <button type="button" class="btn btn-link"><i class="fas fa-pen"></i>&nbsp;Edit</button>
+          <button type="button" class="btn btn-link"><i class="fas fa-trash"></i>&nbsp;Delete</button>
+          <button type="button" class="btn btn-link" *ngIf="anime.shared" (click)="shareCharacter(anime.idAnim, anime.shared)"><i class="fas fa-share-alt"></i>&nbsp; Share</button>
+          <button type="button" class="btn btn-link" *ngIf="!anime.shared" (click)="shareCharacter(anime.idAnim, anime.shared)"><i class="fas fa-share-alt" ></i>&nbsp; Unshare</button>
+        </div>
+        <div role="group" aria-label="Basic example" *ngIf="anime.idOwner === -1">
+          <button type="button" class="btn  btn-outline-primary btn-block btn-link"><i class="fas fa-share-alt"></i>&nbsp; Shared</button>
         </div>
       </div>
+      <img src="http://localhost:8080/v1/photos/animes/{{anime.idAnim}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{anime.nameAnim}}</h5>
+        <span class="badge badge-primary badge-pill">{{anime.category}}</span>
+      </div>
+    </div>
+  </div>
 </div>
